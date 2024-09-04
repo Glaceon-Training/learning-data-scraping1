@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('base.html')
 
 
 @app.route('/popular-detik')
@@ -19,7 +19,14 @@ def popular_detik():
     titles = popular_area.findAll(attrs={'class': 'media__title'})
     images = popular_area.findAll(attrs={'class': 'media__image'})
 
-    return render_template('index.html', images=images)
+    return render_template('detik-scraper.html', images=images)
+
+
+@app.route('/idr-rates')
+def idr_rates():
+    source = requests.get('https://floatrates.com/daily/idr.json')
+    json_data = source.json()
+    return render_template('idr-rates.html', datas=json_data.values())
 
 
 if __name__ == '__main__':

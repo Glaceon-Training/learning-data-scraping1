@@ -21,7 +21,7 @@
       <a class="nav-link" href="/popular-detik">Detik Scraper</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">IDR Rates</a>
+      <a class="nav-link" href="/idr-rates">IDR Rates</a>
     </li>
 <!--    <li class="nav-item">-->
 <!--      <a class="nav-link" href="#">Link 3</a>-->
@@ -30,10 +30,8 @@
 </nav>
 
 <div class="container-fluid" style="margin-top:80px; text-align:center">
-  {% for image in images %}
-      {{ image | safe }}
-      <a href="{{ image.find('a')['href']|safe }}">{{ image.find('a').find('img')['title']|safe }}</a>
-  {% endfor %}
+  {% block body %}
+  {% endblock %}
 <!--  <h3>Brand / Logo</h3>-->
 <!--  <p>The .navbar-brand class is used to highlight the brand/logo/project name of your page.</p>-->
 </div>
